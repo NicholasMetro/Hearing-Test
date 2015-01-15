@@ -1,0 +1,69 @@
+
+package HearingTestJFrame;
+
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.GroupLayout;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.LayoutManager;
+import java.awt.event.ActionListener; 
+import java.awt.event.ActionEvent;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.sound.sampled.AudioInputStream;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+
+public class HTJFrame extends JFrame
+{
+    static JLabel header;  // JLabel for the header of the window
+    static JButton start; // JButton to start the test
+    static JPanel panel; //JPanel container
+    
+    
+    public HTJFrame ()
+    {
+        super ("Hearing Test");
+        
+        panel = new JPanel();
+//        hearingJFrame.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
+        //GroupLayout customlayout = new GroupLayout (panel);
+        //panel.setLayout(customlayout);
+        setLayout(new FlowLayout());
+        
+       //customlayout.setAutoCreateGaps(true);
+       //customlayout.setAutoCreateContainerGaps(true);
+       
+       header = new JLabel ( "Click 'START' to begin the hearing test." );
+       header.setFont(new Font ("Arial", Font.ROMAN_BASELINE, 24));
+       header.setForeground(Color.BLACK);
+       header.setSize(400, 100);
+
+       
+       start = new JButton ("START");
+       start.setSize(200, 100);
+       start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
+       
+
+       ButtonHandler bhandler = new ButtonHandler();
+       start.addActionListener( bhandler );
+       
+       start.setPreferredSize(null);
+       header.setPreferredSize(null);  
+       
+       add ( header );
+       add ( start );
+    }
+    
+}
+class ButtonHandler implements ActionListener
+{
+    public void actionPerformed ( ActionEvent event )
+    {
+        JOptionPane.showMessageDialog(HTJFrame.start, String.format("You hit start"));
+    }
+}
