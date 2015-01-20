@@ -46,7 +46,7 @@ public class HTJFrame extends JFrame
        
        start = new JButton ("START");
        start.setSize(200, 100);
-       start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
+       start.setFont(new Font ("Arial", Font.BOLD, 18));
        
 
        ButtonHandler bhandler = new ButtonHandler();
