@@ -1,0 +1,52 @@
+
+package hearingjframetest;
+
+
+import javax.swing.*;
+import java.awt.*;
+
+
+public class PanelTwo extends JFrame
+{
+    static JLabel header;  // JLabel for the header of the window
+    static JButton start; // JButton to start the test
+    static JPanel panel; //JPanel container
+    public PanelTwo()
+    {
+      super ("Hearing Test");
+        
+        panel = new JPanel();
+//        hearingJFrame.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
+        //GroupLayout customlayout = new GroupLayout (panel);
+        //panel.setLayout(customlayout);
+        setLayout(new FlowLayout());
+        
+       //customlayout.setAutoCreateGaps(true);
+       //customlayout.setAutoCreateContainerGaps(true);
+       
+       header = new JLabel ( "TEST" );
+       header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
+       header.setForeground(Color.BLACK);
+       header.setSize(400, 100);
+
+       
+       start = new JButton ("START");
+       start.setSize(400,400);
+       start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
+       
+
+       ButtonHandler bhandler = new ButtonHandler();
+       start.addActionListener( bhandler );
+       
+       start.setPreferredSize(null);
+       header.setPreferredSize(null);  
+       
+       add ( header );
+       add ( start );          
+    }
+
+    
+    
+    
+    
+}
