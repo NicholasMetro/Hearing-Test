@@ -19,13 +19,10 @@ public class HTJFrame extends JFrame
         super ("Hearing Test");
         
         panel = new JPanel();
-//        hearingJFrame.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-        //GroupLayout customlayout = new GroupLayout (panel);
-        //panel.setLayout(customlayout);
+
         setLayout(new FlowLayout());
         
-       //customlayout.setAutoCreateGaps(true);
-       //customlayout.setAutoCreateContainerGaps(true);
+       
        
        header = new JLabel ( "Click 'START' to begin the hearing test." );
        header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
