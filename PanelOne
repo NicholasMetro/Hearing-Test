@@ -57,6 +57,7 @@ class ButtonHandler implements ActionListener
 
     private void dispose() 
     {
-        hearingJFrame.setVisible(false);
+        //this doesn't work
+        //hearingJFrame.setVisible(false);
     }
 }
