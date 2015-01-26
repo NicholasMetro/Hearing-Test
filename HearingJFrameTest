@@ -1,19 +1,21 @@
-//Andrew Reed
-//1/12/2015
-//Gannon University Programming Contest Submission
-package hearingjframetest;
+/*
+ * Andrew Reed
+ * Nicholas Metro
+ * Jimmy Blaszkiewicz
+ * Gannon Contest Entry
+ */
+package HearingTest;
 
 import javax.swing.JFrame;
 
-public class HearingJFrameTest {
-    static HTJFrame hearingJFrame = new HTJFrame();
+public class HearingTestJFrame{
+
     public static void main(String[] args) 
     {
-        
-        hearingJFrame.setDefaultCloseOperation(HTJFrame.DISPOSE_ON_CLOSE);
+        HTJFrame hearingJFrame = new HTJFrame();
+        hearingJFrame.setDefaultCloseOperation ( JFrame.DO_NOTHING_ON_CLOSE );
         hearingJFrame.setSize( 500, 150);
         hearingJFrame.setVisible( true );
         hearingJFrame.setLocationRelativeTo(null);
     }
-    
 }
