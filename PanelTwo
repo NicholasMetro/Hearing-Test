@@ -22,7 +22,7 @@ public class PanelTwo extends JFrame
         
        
        
-        header = new JLabel ( "TEST" );
+        header = new JLabel ( "Change your volume to 50% of the computer's maximum volume." );
         header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
         header.setForeground(Color.BLACK);
         header.setSize(400, 100);
