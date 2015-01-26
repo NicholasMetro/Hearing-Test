@@ -1,11 +1,11 @@
-package hearingjframetest;
+package HearingTest;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class HTJFrame extends JFrame
+public class PanelOne extends JFrame
 {
     static JLabel header;  // JLabel for the header of the window
     static JButton start; // JButton to start the test
@@ -14,40 +14,32 @@ public class HTJFrame extends JFrame
 
     
     
-    public HTJFrame ()
+    public PanelOne ()
     {
         super ("Hearing Test");
-        
         panel = new JPanel();
-
         setLayout(new FlowLayout());
         
+        header = new JLabel ( "Click 'START' to begin the hearing test." );
+        add ( header );
+        
+        header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
+        header.setForeground(Color.BLACK);
+        header.setSize(400, 100);
+        
+        start = new JButton ("START");
+        add ( start );
+        
+        start.setSize(400,400);
+        start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
        
-       
-       header = new JLabel ( "Click 'START' to begin the hearing test." );
-       header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
-       header.setForeground(Color.BLACK);
-       header.setSize(400, 100);
-
-       
-       start = new JButton ("START");
-       start.setSize(400,400);
-       start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
-       
-
-       ButtonHandler bhandler = new ButtonHandler();
-       start.addActionListener( bhandler );
-       
-       start.setPreferredSize(null);
-       header.setPreferredSize(null);  
-       
-       add ( header );
-       add ( start );
+        StartButtonHandler bhandler = new StartButtonHandler();
+        start.addActionListener( bhandler );
     }
     
 }
 
-class ButtonHandler implements ActionListener
+class StartButtonHandler implements ActionListener
 {
     
     public void actionPerformed ( ActionEvent event )
