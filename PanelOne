@@ -39,11 +39,13 @@ public class PanelOne extends JFrame
     
 }
 
-class StartButtonHandler implements ActionListener
+class ButtonHandler implements ActionListener
 {
+    HearingJFrameTest object = new HearingJFrameTest();
     
     public void actionPerformed ( ActionEvent event )
     {
+        this.dispose();
         
         PanelTwo panel2 = new PanelTwo();
         panel2.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE);
@@ -51,5 +53,11 @@ class StartButtonHandler implements ActionListener
         panel2.setVisible( true );
         panel2.setLocationRelativeTo(null);
         
+       
+    }
+
+    private void dispose() 
+    {
+        hearingJFrame.setVisible(false);
     }
 }
