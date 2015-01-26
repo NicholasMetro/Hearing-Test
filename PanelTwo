@@ -1,9 +1,10 @@
-
 package hearingjframetest;
 
 
-import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 
 public class PanelTwo extends JFrame
@@ -13,40 +14,41 @@ public class PanelTwo extends JFrame
     static JPanel panel; //JPanel container
     public PanelTwo()
     {
-      super ("Hearing Test");
+        super ("Hearing Test");
         
         panel = new JPanel();
-//        hearingJFrame.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-        //GroupLayout customlayout = new GroupLayout (panel);
-        //panel.setLayout(customlayout);
+
         setLayout(new FlowLayout());
         
-       //customlayout.setAutoCreateGaps(true);
-       //customlayout.setAutoCreateContainerGaps(true);
        
-       header = new JLabel ( "TEST" );
-       header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
-       header.setForeground(Color.BLACK);
-       header.setSize(400, 100);
+       
+        header = new JLabel ( "TEST" );
+        header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
+        header.setForeground(Color.BLACK);
+        header.setSize(400, 100);
 
        
-       start = new JButton ("START");
-       start.setSize(400,400);
-       start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
+        start = new JButton ("START");
+        start.setSize(400,400);
+        start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
        
+        //DButtonHandler is a temporary name until we have the name of the button sorted
+        DButtonHandler bhandler = new DButtonHandler();
+        start.addActionListener( bhandler );
+       
+        start.setPreferredSize(null);
+        header.setPreferredSize(null);  
+       
+        add ( header );
+        add ( start );          
+    }//end paneltwo constructor
 
-       ButtonHandler bhandler = new ButtonHandler();
-       start.addActionListener( bhandler );
-       
-       start.setPreferredSize(null);
-       header.setPreferredSize(null);  
-       
-       add ( header );
-       add ( start );          
+}//end class paneltwo
+
+class DButtonHandler implements ActionListener
+{
+    public void actionPerformed( ActionEvent event )
+    {
+        System.out.println("You have pressed button on panel two");
     }
-
-    
-    
-    
-    
 }
