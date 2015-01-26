@@ -1,5 +1,5 @@
 
-package HearingTestJFrame;
+package hearingjframetest;
 
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -24,6 +24,8 @@ public class HTJFrame extends JFrame
     static JButton start; // JButton to start the test
     static JPanel panel; //JPanel container
     
+
+    
     
     public HTJFrame ()
     {
@@ -39,14 +41,14 @@ public class HTJFrame extends JFrame
        //customlayout.setAutoCreateContainerGaps(true);
        
        header = new JLabel ( "Click 'START' to begin the hearing test." );
-       header.setFont(new Font ("Arial", Font.ROMAN_BASELINE, 24));
+       header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
        header.setForeground(Color.BLACK);
        header.setSize(400, 100);
 
        
        start = new JButton ("START");
-       start.setSize(200, 100);
-       start.setFont(new Font ("Arial", Font.BOLD, 18));
+       start.setSize(400,400);
+       start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
        
 
        ButtonHandler bhandler = new ButtonHandler();
@@ -60,10 +62,21 @@ public class HTJFrame extends JFrame
     }
     
 }
+
 class ButtonHandler implements ActionListener
 {
+    HearingJFrameTest object = new HearingJFrameTest();
+    
     public void actionPerformed ( ActionEvent event )
     {
-        JOptionPane.showMessageDialog(HTJFrame.start, String.format("You hit start"));
+        hearingJFrame.setVisible(false);
+        
+        PanelTwo panel2 = new PanelTwo();
+        panel2.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE);
+        panel2.setSize( 500, 150);
+        panel2.setVisible( true );
+        panel2.setLocationRelativeTo(null);
+        
+
     }
 }
