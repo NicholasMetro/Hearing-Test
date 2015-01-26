@@ -41,7 +41,6 @@ public class PanelOne extends JFrame
 
 class ButtonHandler implements ActionListener
 {
-    HearingJFrameTest object = new HearingJFrameTest();
     
     public void actionPerformed ( ActionEvent event )
     {
