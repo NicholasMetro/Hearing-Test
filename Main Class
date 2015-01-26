@@ -8,7 +8,7 @@ package HearingTest;
 
 import javax.swing.JFrame;
 
-public class HearingTestJFrame{
+public class HearingTest{
 
     public static void main(String[] args) 
     {
