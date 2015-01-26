@@ -1,17 +1,17 @@
 //Andrew Reed
 //1/12/2015
 //Gannon University Programming Contest Submission
-package HearingTestJFrame;
+package hearingjframetest;
 
 import javax.swing.JFrame;
 
 public class HearingJFrameTest {
-
+    static HTJFrame hearingJFrame = new HTJFrame();
     public static void main(String[] args) 
     {
-        HTJFrame hearingJFrame = new HTJFrame();
-        hearingJFrame.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-        hearingJFrame.setSize( 500, 250);
+        
+        hearingJFrame.setDefaultCloseOperation(HTJFrame.DISPOSE_ON_CLOSE);
+        hearingJFrame.setSize( 500, 150);
         hearingJFrame.setVisible( true );
         hearingJFrame.setLocationRelativeTo(null);
     }
