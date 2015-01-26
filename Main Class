@@ -12,7 +12,7 @@ public class HearingTest{
 
     public static void main(String[] args) 
     {
-        HTJFrame hearingJFrame = new HTJFrame();
+        PanelOne hearingJFrame = new PanelOne();
         hearingJFrame.setDefaultCloseOperation ( JFrame.DO_NOTHING_ON_CLOSE );
         hearingJFrame.setSize( 500, 150);
         hearingJFrame.setVisible( true );
