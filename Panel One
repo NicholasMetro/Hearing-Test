@@ -1,0 +1,63 @@
+package HearingTest;
+
+import static HearingTest.Test.hearingJFrame;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class PanelOne extends JFrame
+{
+    static JLabel header;  // JLabel for the header of the window
+    static JButton start; // JButton to start the test
+    static JPanel panel; //JPanel container 
+    
+    public PanelOne ()
+    {
+        super ("Hearing Test");
+        
+        panel = new JPanel();
+
+        setLayout(new FlowLayout());
+        
+        header = new JLabel ( "Click 'START' to begin the hearing test." );
+        add ( header );
+        
+        header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
+        header.setForeground(Color.BLACK);
+        header.setSize(400, 100);
+        
+        start = new JButton ("START");
+        add ( start );
+        
+        start.setSize(400,400);
+        start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
+       
+
+        StartButtonHandler bhandler = new StartButtonHandler();
+        start.addActionListener( bhandler );
+    }//end panel one constructor
+    
+}//end panel one class
+
+class StartButtonHandler implements ActionListener
+{
+    Test object = new Test();
+    
+    public void actionPerformed ( ActionEvent event )
+    {
+        this.dispose();
+        
+        PanelTwo panel2 = new PanelTwo();
+        panel2.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE);
+        panel2.setSize( 500, 150);
+        panel2.setVisible( true );
+        panel2.setLocationRelativeTo(null);
+        
+    }//end actionPerformed method
+    private void dispose()
+    {
+        hearingJFrame.setVisible(false);
+    }//end dispose method
+    
+}//end startButtonHandler class
