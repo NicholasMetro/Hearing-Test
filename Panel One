@@ -8,30 +8,25 @@ import javax.swing.*;
 
 public class PanelOne extends JFrame
 {
-    static JLabel header;  // JLabel for the header of the window
-    static JButton start; // JButton to start the test
-    static JPanel panel; //JPanel container 
+    static JLabel header;  
+    static JimButton start;
+    static final int w = 200;
+    static final int h = 28;
     
     public PanelOne ()
     {
         super ("Hearing Test");
-        
-        panel = new JPanel();
-
         setLayout(new FlowLayout());
         
         header = new JLabel ( "Click 'START' to begin the hearing test." );
         add ( header );
         
-        header.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 24));
-        header.setForeground(Color.BLACK);
-        header.setSize(400, 100);
+        header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 24));
         
-        start = new JButton ("START");
+        start = new JimButton ("START", w, h);
         add ( start );
         
-        start.setSize(400,400);
-        start.setFont(new Font ("Comic Sans", Font.BOLD, 18));
+        start.setFont(new Font ("Bold", Font.BOLD, 18));
        
 
         StartButtonHandler bhandler = new StartButtonHandler();
