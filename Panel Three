@@ -1,0 +1,73 @@
+/*
+ * Jimmy Blaszkiewicz
+ * Third Panel to collect response time and ear accuracy
+ */
+
+package HearingTest;
+
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+/**
+ *
+ * @author Jimmy
+ */
+public class PanelThree extends JFrame
+{
+    static JLabel header;
+    static JimButton right;
+    static JimButton left;
+    static final int w = HearingTest.PanelOne.w;
+    static final int h = HearingTest.PanelOne.h;
+    
+    public PanelThree ()
+    {
+        super ("Hearing Test");
+        setLayout(new FlowLayout());
+        
+        header = new JLabel ( "Press the button for the corresponding ear" );
+        add ( header );
+        
+        
+        header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 16));
+        
+        right = new JimButton ("RIGHT", w, h);
+        add ( right );
+        
+        right.setFont(new Font ("Bold", Font.BOLD, 18) );
+        
+        left = new JimButton ("LEFT", w, h);
+        add ( left );
+        
+        left.setFont(new Font ("Bold", Font.BOLD, 18) );
+
+        RightHandler rhandler = new RightHandler();
+        right.addActionListener( rhandler );
+        
+        LeftHandler lhandler = new LeftHandler();
+        left.addActionListener( lhandler );
+    }//end panel one constructor
+    
+}//end panel one class
+
+class RightHandler implements ActionListener{
+    
+    public void actionPerformed( ActionEvent event )
+    {
+        System.out.println("You pressed the right button");
+        
+    }//end actionPerformed Method
+    
+}//end RightHandler
+class LeftHandler implements ActionListener{
+    
+    public void actionPerformed( ActionEvent event )
+    {
+        System.out.println("You pressed the left button");
+        
+    }//end actionPerformed Method
+}//end LeftHandler
