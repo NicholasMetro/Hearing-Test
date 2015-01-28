@@ -1,6 +1,7 @@
 package HearingTest;
 
 
+import static HearingTest.PanelOne.panel2;
 import static HearingTest.PanelTwo.panel3;
 import static HearingTest.Test.hearingJFrame;
 import java.awt.*;
@@ -52,7 +53,7 @@ class DoneHandler implements ActionListener
     }//end actionPerformed method
     private void dispose()
     {
-        hearingJFrame.setVisible(false);
+        panel2.setVisible(false);
     }//end dispose method
     
 }//end startButtonHandler class
