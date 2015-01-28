@@ -1,0 +1,59 @@
+package HearingTest;
+
+
+import static HearingTest.PanelOne.panel2;
+import static HearingTest.PanelTwo.panel3;
+import static HearingTest.Test.hearingJFrame;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+
+public class PanelTwo extends JFrame
+{
+    static JLabel prompt;  
+    static JimButton done; 
+    static PanelThree panel3 = new PanelThree();
+    public PanelTwo()
+    {
+        super ("Hearing Test");
+        setLayout(new FlowLayout());
+        
+        prompt = new JLabel ( 
+                "Change your volume to 50% of the computer's maximum volume." );
+        prompt.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 16));
+        
+        done = new JimButton ("DONE", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
+        done.setFont(new Font ("Bold", Font.BOLD, 16));
+       
+        DoneHandler bhandler = new DoneHandler();
+        done.addActionListener( bhandler );
+        
+        add ( prompt );
+        add ( done );    
+        
+    }//end paneltwo constructor
+    
+}//end class paneltwo
+
+class DoneHandler implements ActionListener
+{
+    PanelOne object = new PanelOne();
+    
+    public void actionPerformed ( ActionEvent event )
+    {
+        this.dispose();
+        
+        panel3.setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE );
+        panel3.setSize( 500, 150);
+        panel3.setVisible( true );
+        panel3.setLocationRelativeTo(null);
+        
+    }//end actionPerformed method
+    private void dispose()
+    {
+        panel2.setVisible(false);
+    }//end dispose method
+    
+}//end startButtonHandler class
