@@ -59,7 +59,16 @@ class RightHandler implements ActionListener{
     public void actionPerformed( ActionEvent event )
     {
         System.out.println("You pressed the right button");
-        
+        /*pseudocode
+        reactionTime = SoundStartTime - TimeNow
+        if ( reactionTime is less than 300 milliseconds && the sound played in the right ear)
+            increment correct answer for right ear
+            add reaction time to a sum to be averaged later 
+                and given to user as average reaction time
+        //this reactionTime sum will be the same variable as the left ear
+        else
+            increment incorrect answer for right ear
+        */
     }//end actionPerformed Method
     
 }//end RightHandler
@@ -68,6 +77,15 @@ class LeftHandler implements ActionListener{
     public void actionPerformed( ActionEvent event )
     {
         System.out.println("You pressed the left button");
-        
+        /*pseudocode
+        reactionTime = SoundStartTime - TimeNow
+        if ( reactionTime is less than 300 milliseconds && the sound played in the left ear)
+            increment correct answer for left ear
+            add reaction time to a sum to be averaged later 
+                and given to user as average reaction time
+        //this reactionTime sum will be the same variable as the right ear
+        else
+            increment incorrect answer for left ear
+        */
     }//end actionPerformed Method
 }//end LeftHandler
