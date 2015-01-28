@@ -1,0 +1,57 @@
+/*
+ * Jimmy Blaszkiewicz
+ * Fourth Panel of HearingTest to give user feedback
+ */
+
+package HearingTest;
+
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+/**
+ *
+ * @author Jimmy
+ */
+public class PanelFour extends JFrame
+{
+    static JLabel header;
+    static JLabel rightCorrect;
+    static JLabel rightIncorrect;
+    static JLabel leftCorrect;
+    static JLabel leftIncorrect;
+    static final int averageResponse;
+    
+    
+    public PanelFour ()
+    {
+        super ("Hearing Test");
+        setLayout(new FlowLayout());
+        
+        header = new JLabel ( "RESULTS" );
+        add ( header );
+        
+        
+        header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 16));
+        
+        right = new JimButton ("RIGHT", w, h);
+        add ( right );
+        
+        right.setFont(new Font ("Bold", Font.BOLD, 18) );
+        
+        left = new JimButton ("LEFT", w, h);
+        add ( left );
+        
+        left.setFont(new Font ("Bold", Font.BOLD, 18) );
+
+        RightHandler rhandler = new RightHandler();
+        right.addActionListener( rhandler );
+        
+        LeftHandler lhandler = new LeftHandler();
+        left.addActionListener( lhandler );
+    }//end panel one constructor
+    
+}//end panel one class
