@@ -2,18 +2,20 @@ package HearingTest;
 
 import static HearingTest.PanelOne.panel2;
 import static HearingTest.Test.hearingJFrame;
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class PanelOne extends JFrame
 {
     static JLabel header;  
     static JimButton start;
-    static final int w = 200;
-    static final int h = 28;
-    static PanelTwo panel2 = new PanelTwo();
+    static final int w = 190;
+    static final int h = 33;
+    static PanelTwo panel2; 
     
     public PanelOne ()
     {
@@ -44,8 +46,8 @@ class StartButtonHandler implements ActionListener
     public void actionPerformed ( ActionEvent event )
     {
         this.dispose();
-        
-        panel2.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE);
+        panel2 = new PanelTwo();
+        panel2.setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE);
         panel2.setSize( 500, 150);
         panel2.setVisible( true );
         panel2.setLocationRelativeTo(null);
