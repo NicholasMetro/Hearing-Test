@@ -3,18 +3,19 @@ package HearingTest;
 
 import static HearingTest.PanelOne.panel2;
 import static HearingTest.PanelTwo.panel3;
-import static HearingTest.Test.hearingJFrame;
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 
 public class PanelTwo extends JFrame
 {
     static JLabel prompt;  
     static JimButton done; 
-    static PanelThree panel3 = new PanelThree();
+    static PanelThree panel3;
     public PanelTwo()
     {
         super ("Hearing Test");
@@ -31,8 +32,8 @@ public class PanelTwo extends JFrame
         done.addActionListener( bhandler );
         
         add ( prompt );
-        add ( done );    
-        
+        add ( done );     
+         
     }//end paneltwo constructor
     
 }//end class paneltwo
@@ -44,8 +45,10 @@ class DoneHandler implements ActionListener
     public void actionPerformed ( ActionEvent event )
     {
         this.dispose();
-        
-        panel3.setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE );
+        panel3 = new PanelThree();
+        // exit on close temporary until PanelThree finished 
+        // and PanelFour construction begins
+        panel3.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
         panel3.setSize( 500, 150);
         panel3.setVisible( true );
         panel3.setLocationRelativeTo(null);
@@ -57,3 +60,4 @@ class DoneHandler implements ActionListener
     }//end dispose method
     
 }//end startButtonHandler class
+
