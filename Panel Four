@@ -23,7 +23,7 @@ public class PanelFour extends JFrame
     static JLabel rightIncorrect;
     static JLabel leftCorrect;
     static JLabel leftIncorrect;
-    static final int averageResponse;
+    static final int averageResponse = 0;
     
     
     public PanelFour ()
@@ -34,24 +34,8 @@ public class PanelFour extends JFrame
         header = new JLabel ( "RESULTS" );
         add ( header );
         
-        
         header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 16));
         
-        right = new JimButton ("RIGHT", w, h);
-        add ( right );
-        
-        right.setFont(new Font ("Bold", Font.BOLD, 18) );
-        
-        left = new JimButton ("LEFT", w, h);
-        add ( left );
-        
-        left.setFont(new Font ("Bold", Font.BOLD, 18) );
-
-        RightHandler rhandler = new RightHandler();
-        right.addActionListener( rhandler );
-        
-        LeftHandler lhandler = new LeftHandler();
-        left.addActionListener( lhandler );
     }//end panel one constructor
     
 }//end panel one class
