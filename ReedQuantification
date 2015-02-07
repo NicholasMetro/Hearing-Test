@@ -1,0 +1,79 @@
+
+package hearingtest;
+
+public class ReedQuantification 
+{
+  int [] leftToneNumber = new int [15];
+  int [] rightToneNumber = new int [15];
+  boolean[] leftSoundHeard = new boolean [15];
+  boolean [] rightSoundHeard = new boolean [15];
+  int [] leftTime = new int [15];
+  int [] rightTime = new int [15];
+  int [] leftDifficulty = leftToneNumber;
+  int [] rightDifficulty = rightToneNumber;
+  int [] timeScore = { 3, 2, 1 };
+  int leftScore = 0;
+  int rightScore = 0;
+  int rightVsLeft;
+  
+  
+  public ReedQuantification()
+          {
+              //Quantifying Left Ear Results
+              for (int i = 0; i < leftToneNumber.length; i++)
+              {
+                  if (leftSoundHeard[i] == true)
+                  {
+                      if (leftTime[i] <= 1000)
+                      {
+                        leftScore = leftScore + (leftDifficulty[i] * timeScore[2]);
+                      }
+
+                      if (leftTime[i] > 1000 && leftTime [i] <= 2000)
+                      {
+                          leftScore = leftScore + (leftDifficulty[i] * timeScore[1]);
+                      }
+                      if (leftTime [i] > 2000 )
+                      {
+                          leftScore  = leftScore + (leftDifficulty[i] * timeScore [0]);
+                      }
+                  }
+              //Quantifying Right Ear Results  
+              for (int q = 0; q < rightToneNumber.length; q++)
+              {
+                  if (rightSoundHeard[q] == true)
+                  {
+                      if (rightTime[q] <= 1000)
+                      {
+                        rightScore = rightScore + (leftDifficulty[i] * timeScore[2]);
+                      }
+
+                      if (rightTime[q] > 1000 && rightTime [q] <= 2000)
+                      {
+                          rightScore = rightScore + (leftDifficulty[i] * timeScore[1]);
+                      }
+                      if (rightTime [q] > 2000 )
+                      {
+                          rightScore  = rightScore + (rightDifficulty[i] * timeScore [0]);
+                      }
+                  }
+               }
+               //Comparing Left and Right results
+               if (rightScore == leftScore)
+               {
+                   rightVsLeft = 0;
+               }
+                   else if (rightScore > leftScore)
+                           {
+                             rightVsLeft = rightScore - leftScore;
+                             boolean rightIsGreater = true;
+                           }
+                   else 
+                           {
+                            rightVsLeft = leftScore - rightScore;
+                            boolean leftIsGreater = true;
+                           }
+
+              }
+          }
+}
