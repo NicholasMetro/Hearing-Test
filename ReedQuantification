@@ -30,8 +30,7 @@ public class ReedQuantification
   //int for the differential between the two scores
   int rightVsLeft;
   
-  
-  public ReedQuantification()
+  public ReedQuantification() //start of constructor
           {
               //Quantifying Left Ear Results
               for (int i = 0; i < leftToneNumber.length; i++)
@@ -40,18 +39,18 @@ public class ReedQuantification
                   {
                       if (leftTime[i] <= 1000)
                       {
-                        leftScore = leftScore + (leftDifficulty[i] * timeScore[2]);
-                      }
-
+                        leftScore = leftScore + (leftDifficulty[i] * timeScore[2]); //leftScore = leftScore + difficulty*3
+                      }//end of if
                       if (leftTime[i] > 1000 && leftTime [i] <= 2000)
                       {
-                          leftScore = leftScore + (leftDifficulty[i] * timeScore[1]);
-                      }
+                          leftScore = leftScore + (leftDifficulty[i] * timeScore[1]); //leftScore = leftScore + difficulty*2
+                      }//end of if
                       if (leftTime [i] > 2000 )
                       {
-                          leftScore  = leftScore + (leftDifficulty[i] * timeScore [0]);
-                      }
-                  }
+                          leftScore  = leftScore + (leftDifficulty[i] * timeScore [0]); //leftScore = leftScore + difficulty*1 
+                      } //end of if
+                  }//end of if
+              }//end of for
               //Quantifying Right Ear Results  
               for (int q = 0; q < rightToneNumber.length; q++)
               {
@@ -59,35 +58,33 @@ public class ReedQuantification
                   {
                       if (rightTime[q] <= 1000)
                       {
-                        rightScore = rightScore + (leftDifficulty[i] * timeScore[2]);
-                      }
-
+                        rightScore = rightScore + (leftDifficulty[i] * timeScore[2]); //rightScore = rightScore + difficulty*3
+                      }//end of if
                       if (rightTime[q] > 1000 && rightTime [q] <= 2000)
                       {
-                          rightScore = rightScore + (leftDifficulty[i] * timeScore[1]);
-                      }
+                          rightScore = rightScore + (leftDifficulty[i] * timeScore[1]); //rightScore = rightScore + difficulty*2
+                      }//end of if
                       if (rightTime [q] > 2000 )
                       {
-                          rightScore  = rightScore + (rightDifficulty[i] * timeScore [0]);
-                      }
-                  }
-               }
+                          rightScore  = rightScore + (rightDifficulty[i] * timeScore [0]); //rightScore = rightScore + difficulty*1
+                      }//end of if
+                  }//end of if
+               }//end of for
                //Comparing Left and Right results
                if (rightScore == leftScore)
                {
                    rightVsLeft = 0;
-               }
+               }//end of if
                    else if (rightScore > leftScore)
                            {
                              rightVsLeft = rightScore - leftScore;
-                             boolean rightIsGreater = true;
-                           }
+                             boolean rightIsGreater = true; 
+                           }//end of if
                    else 
                            {
                             rightVsLeft = leftScore - rightScore;
                             boolean leftIsGreater = true;
-                           }
+                           }//end of else
+              }//end of constructor
+          }//end of class
 
-              }
-          }
-}
