@@ -1,41 +1,95 @@
 /*
  * Jimmy Blaszkiewicz
+ * Andrew Reed
  * Fourth Panel of HearingTest to give user feedback
  */
 
-package HearingTest;
+package hearingtest;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import static hearingtest.ReedQuantification.*;
 
-/**
- *
- * @author Jimmy
- */
 public class PanelFour extends JFrame
 {
-    static JLabel header;
-    static JLabel rightCorrect;
-    static JLabel rightIncorrect;
-    static JLabel leftCorrect;
-    static JLabel leftIncorrect;
-    static final int averageResponse = 0;
-    
-    
+
     public PanelFour ()
     {
         super ("Hearing Test");
-        setLayout(new FlowLayout());
         
-        header = new JLabel ( "RESULTS" );
-        add ( header );
+        setLayout(new GridLayout(3, 4, 5, 10));
         
-        header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 16));
+        JLabel header = new JLabel ("Results");
+
+        header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 24));
         
+        JLabel leftScoreHeader = new JLabel ("Left Ear Score (out of 360)");
+        JLabel rightScoreHeader = new JLabel ("Right Ear Score (out of 360)");
+        JLabel empty = new JLabel ("");
+        
+        String leftScoreString = String.valueOf(leftScore);
+        JLabel leftScoreNumber = new JLabel (leftScoreString);
+        String rightScoreString = String.valueOf(rightScore);
+        JLabel rightScoreNumber = new JLabel (rightScoreString);
+        
+        JLabel rIsGreater = new JLabel ("Your right ear scored" + rightVsLeftPercentage + "better than your left ear.");
+        
+        JLabel lIsGreater = new JLabel ("Your left ear scored" + rightVsLeftPercentage + "better than your right ear.");
+        
+        JLabel scoresEqual = new JLabel ("Your left and right ears scored the same.");
+        
+        JLabel empty2 = new JLabel ("");
+        JLabel empty3 = new JLabel ("");
+        
+        JLabel noHearingLoss = new JLabel ("You show no signs of hearing loss.");
+        JLabel mildHearingLoss = new JLabel ("You show signs of mild hearing loss, please consult with your doctory");
+        JLabel moderateHearingLoss = new JLabel ("You show signs of moderate hearing loss, please consult with your doctor");
+        JLabel severeHearingLoss = new JLabel ("You show signs of severe hearing loss, please consult with your doctor");
+
+        add (header);
+        add (leftScoreHeader);
+        add (rightScoreHeader);
+        add (empty);
+        add (leftScoreNumber);
+        add (rightScoreNumber);
+        
+        if (rightScore == leftScore)
+        {
+            add (scoresEqual);
+            
+        }
+        else if (rightIsGreater)
+        {
+         
+         add (rIsGreater); 
+        }
+        else if (leftIsGreater)
+        {
+         add(lIsGreater);
+        }
+        
+        if (rightScore >= 270 || leftScore >= 270)
+        {
+            add (noHearingLoss);
+        }
+        else if (rightScore >= 200 && rightScore < 270 || leftScore >= 200 && leftScore < 270)
+        {
+            add (mildHearingLoss);
+        }
+        else if (rightScore >= 160 && rightScore < 200 || leftScore >= 160 && leftScore < 200)
+        {
+            add (moderateHearingLoss);
+        }
+        else if (rightScore >= 0 && rightScore < 160 || leftScore >= 0 && leftScore < 160)
+        {
+            add (severeHearingLoss);
+        }
+
     }//end panel one constructor
     
 }//end panel one class
