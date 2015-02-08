@@ -48,7 +48,7 @@ class StartButtonHandler implements ActionListener
         this.dispose();
         panel2 = new PanelTwo();
         panel2.setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE);
-        panel2.setSize( 500, 150);
+        panel2.setSize( 1000, 300);
         panel2.setVisible( true );
         panel2.setLocationRelativeTo(null);
         
