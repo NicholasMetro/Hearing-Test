@@ -37,7 +37,7 @@ public class ReedQuantification
               {
                   if (leftSoundHeard[i] == true)
                   {
-                      if (leftTime[i] <= 1000)
+                      if (leftTime[i] > 0 && leftTime[i] <= 1000)
                       {
                         leftScore = leftScore + (leftDifficulty[i] * timeScore[2]); //leftScore = leftScore + difficulty*3
                       }//end of if
@@ -56,17 +56,17 @@ public class ReedQuantification
               {
                   if (rightSoundHeard[q] == true)
                   {
-                      if (rightTime[q] <= 1000)
+                      if (rightTime[q] > 0 && rightTime[q] <= 1000)
                       {
-                        rightScore = rightScore + (leftDifficulty[i] * timeScore[2]); //rightScore = rightScore + difficulty*3
+                        rightScore = rightScore + (leftDifficulty[q] * timeScore[2]); //rightScore = rightScore + difficulty*3
                       }//end of if
                       if (rightTime[q] > 1000 && rightTime [q] <= 2000)
                       {
-                          rightScore = rightScore + (leftDifficulty[i] * timeScore[1]); //rightScore = rightScore + difficulty*2
+                          rightScore = rightScore + (leftDifficulty[q] * timeScore[1]); //rightScore = rightScore + difficulty*2
                       }//end of if
                       if (rightTime [q] > 2000 )
                       {
-                          rightScore  = rightScore + (rightDifficulty[i] * timeScore [0]); //rightScore = rightScore + difficulty*1
+                          rightScore  = rightScore + (rightDifficulty[q] * timeScore [0]); //rightScore = rightScore + difficulty*1
                       }//end of if
                   }//end of if
                }//end of for
@@ -87,4 +87,3 @@ public class ReedQuantification
                            }//end of else
               }//end of constructor
           }//end of class
-
