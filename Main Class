@@ -13,7 +13,7 @@ public class Test{
     public static void main(String[] args) 
     {
         hearingJFrame.setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE );
-        hearingJFrame.setSize( 1000, 300);
+        hearingJFrame.setSize( 1000, 400);
         hearingJFrame.setVisible( true );
         hearingJFrame.setLocationRelativeTo(null);
     }//end main method
