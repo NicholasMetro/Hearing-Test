@@ -1,8 +1,3 @@
-/*
- * Jimmy Blaszkiewicz
- * Andrew Reed
- * Fourth Panel of HearingTest to give user feedback
- */
 
 package hearingtest;
 
@@ -18,13 +13,14 @@ import static hearingtest.ReedQuantification.*;
 public class PanelFour extends JFrame
 {
 
-    public PanelFour ()
+
+    public PanelFour(int lScore, int rScore, double rVsL, double rVsLP )
     {
         super ("Hearing Test");
         
         setLayout(new GridLayout(3, 4, 5, 10));
         
-        JLabel header = new JLabel ("Results");
+        JLabel header = new JLabel (" Results");
 
         header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 24));
         
@@ -32,25 +28,26 @@ public class PanelFour extends JFrame
         JLabel rightScoreHeader = new JLabel ("Right Ear Score (out of 360)");
         JLabel empty = new JLabel ("");
         
-        String leftScoreString = String.valueOf(leftScore);
+        String leftScoreString = String.valueOf(lScore);
         JLabel leftScoreNumber = new JLabel (leftScoreString);
-        String rightScoreString = String.valueOf(rightScore);
+        String rightScoreString = String.valueOf(rScore);
         JLabel rightScoreNumber = new JLabel (rightScoreString);
         
-        JLabel rIsGreater = new JLabel ("Your right ear scored" + rightVsLeftPercentage + "better than your left ear.");
-        
-        JLabel lIsGreater = new JLabel ("Your left ear scored" + rightVsLeftPercentage + "better than your right ear.");
-        
         JLabel scoresEqual = new JLabel ("Your left and right ears scored the same.");
+        JLabel rIsGreater = new JLabel ("Your right ear scored " + (rVsLP*100) + "% better than your left ear.");
+        JLabel lIsGreater = new JLabel ("Your left ear scored " + (rVsLP*100) + "% better than your right ear.");
         
         JLabel empty2 = new JLabel ("");
         JLabel empty3 = new JLabel ("");
         
-        JLabel noHearingLoss = new JLabel ("You show no signs of hearing loss.");
-        JLabel mildHearingLoss = new JLabel ("You show signs of mild hearing loss, please consult with your doctory");
-        JLabel moderateHearingLoss = new JLabel ("You show signs of moderate hearing loss, please consult with your doctor");
-        JLabel severeHearingLoss = new JLabel ("You show signs of severe hearing loss, please consult with your doctor");
+        JLabel noHearingLoss = new JLabel ("   You show no signs of hearing loss.");
+        JLabel mildHearingLoss = new JLabel ("   You show signs of mild hearing loss.");
+        JLabel moderateHearingLoss = new JLabel ("   You show signs of moderate hearing loss.");
+        JLabel severeHearingLoss = new JLabel ("   You show signs of severe hearing loss.");
 
+        JLabel consult = new JLabel ("Please consult with your doctor.");
+        consult.setFont(new Font ("Baseline", Font.BOLD, 14));
+                
         add (header);
         add (leftScoreHeader);
         add (rightScoreHeader);
@@ -58,38 +55,37 @@ public class PanelFour extends JFrame
         add (leftScoreNumber);
         add (rightScoreNumber);
         
-        if (rightScore == leftScore)
+        if (rScore == lScore)
         {
-            add (scoresEqual);
-            
+            add (scoresEqual); 
         }
-        else if (rightIsGreater)
+        else if (rScore > lScore)
         {
-         
          add (rIsGreater); 
         }
-        else if (leftIsGreater)
+        else if (lScore > rScore)
         {
          add(lIsGreater);
         }
         
-        if (rightScore >= 270 || leftScore >= 270)
+        if (rScore >= 270 || lScore >= 270)
         {
             add (noHearingLoss);
         }
-        else if (rightScore >= 200 && rightScore < 270 || leftScore >= 200 && leftScore < 270)
+        else if (rScore >= 200 && rScore < 270 || lScore >= 200 && lScore < 270)
         {
             add (mildHearingLoss);
+            add (consult);
         }
-        else if (rightScore >= 160 && rightScore < 200 || leftScore >= 160 && leftScore < 200)
+        else if (rScore >= 160 && rScore < 200 || lScore >= 160 && lScore < 200)
         {
             add (moderateHearingLoss);
+            add (consult);
         }
-        else if (rightScore >= 0 && rightScore < 160 || leftScore >= 0 && leftScore < 160)
+        else if (rScore >= 0 && rScore < 160 || lScore >= 0 && lScore < 160)
         {
             add (severeHearingLoss);
+            add (consult);
         }
-
-    }//end panel one constructor
-    
-}//end panel one class
+    }
+}
