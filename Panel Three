@@ -66,9 +66,9 @@ public class PanelThree extends JFrame
         left.addActionListener( lhandler );
         
         new SoundTimer();
-    }//end panel one constructor
+    }//end panel three constructor
     
-}//end panel one class
+}//end panel three class
 
 class SoundTimer extends JFrame{
         private final Timer timer;
