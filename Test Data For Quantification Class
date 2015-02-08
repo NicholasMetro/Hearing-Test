@@ -3,44 +3,53 @@ package testForQuantification;
 
 public class testForQuantification {
 
-
-    public static void main(String[] args) {
-   
-  int [] leftToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+static int [] leftToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
           //new int [15]; 
   //int array for ints from 1-15 representing left ear tones in order from least difficult to most difficult 
-  int [] rightToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+  static int [] rightToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
           //new int [15];
    //int array for ints from 1-15 representing right ear tones in order from least difficult to most difficult 
   
   //true or false boolean arrays for whether or not the tone was heard
-  boolean[] leftSoundHeard = {true, true, true, true, false, true, false, true, true, false, false, false, false, false, false};
+  static boolean[] leftSoundHeard = {true, true, true, true, false, true, false, true, true, false, false, false, false, false, false};
           //new boolean [15];
-  boolean [] rightSoundHeard = {true, true, true, true, false, true, false, false, false, false, false, false, false, false, false};
+  static boolean [] rightSoundHeard = {true, true, true, true, false, true, false, false, false, false, false, false, false, false, false};
           //new boolean [15];
   
   //int arrays for the time it took for the tone to be heard (0-5000 ms)
-  int [] leftTime = {900, 1023, 2342, 234, 0, 231, 0, 3002, 3021, 0, 0, 0, 0, 0};
+  static int [] leftTime = {900, 1023, 2342, 234, 0, 231, 0, 3002, 3021, 0, 0, 0, 0, 0};
           //new int [15];
-  int [] rightTime = {2122, 131, 3213, 321, 0, 1234, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  static int [] rightTime = {2122, 131, 3213, 321, 0, 1234, 0, 0, 0, 0, 0, 0, 0, 0, 0};
           //new int [15];
   
   //int arrays  for the difficulty of the tone (how low the decibels it was/how high the frequency) since the tones are in order from least difficult to most difficult, they =  the respective tone's #
-  int [] leftDifficulty = leftToneNumber;
-  int [] rightDifficulty = rightToneNumber;
+  static int [] leftDifficulty = leftToneNumber;
+  static int [] rightDifficulty = rightToneNumber;
   
   // int array for the timescore
-  int [] timeScore = { 3, 2, 1 };
+  static int [] timeScore = { 3, 2, 1 };
   
   // ints for the composite right and left scores
-  int leftScore = 0;
-  int rightScore = 0;
+  static int leftScore = 0;
+  static int rightScore = 0;
   
-  //int for the differential between the two scores
-  int rightVsLeft;
-  
+   static int finalLeftScore;
+   static int finalRightScore;
  
-              //Quantifying Left Ear Results
+  //int for the differential between the two scores
+  static int rightVsLeft;
+  static double rightVsLeftPercentage;
+  
+  static int finalRightVsLeft;
+  static double finalRightVsLeftPercentage;
+  
+  
+  static double totalPossible = 360;
+  
+  
+  public static void main(String[] args) {
+             
+      //Quantifying Left Ear Results
               for (int i = 0; i < leftToneNumber.length; i++)
               {
                   if (leftSoundHeard[i] == true)
@@ -86,20 +95,28 @@ public class testForQuantification {
                    else if (rightScore > leftScore)
                            {
                              rightVsLeft = rightScore - leftScore;
-                             boolean rightIsGreater = true; 
+                             rightVsLeftPercentage = ((rightScore/totalPossible) - (leftScore/totalPossible));
                            }//end of if
                    else 
                            {
                             rightVsLeft = leftScore - rightScore;
-                            boolean leftIsGreater = true;
+                            rightVsLeftPercentage = ((leftScore/totalPossible) - (rightScore/totalPossible));
                            }//end of else
                            
-               System.out.println(leftScore);
-               System.out.println(rightScore);
-               System.out.println(rightVsLeft);
+               finalRightScore = rightScore;
+               finalLeftScore = leftScore;
                
+               finalRightVsLeft = rightVsLeft;
+               finalRightVsLeftPercentage = rightVsLeftPercentage;
+               
+               panelFour panel = new panelFour (finalLeftScore, finalRightScore, finalRightVsLeft, finalRightVsLeftPercentage);
+               
+               panel.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE);
+               panel.setSize( 1000, 400);
+               panel.setVisible( true );
+               panel.setLocationRelativeTo(null);
+
               }//end of constructor
+
           }//end of class
    
-    
-
