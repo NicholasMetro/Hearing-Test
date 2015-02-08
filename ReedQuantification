@@ -1,5 +1,8 @@
 
+
 package hearingtest;
+
+import javax.swing.JFrame;
 
 public class ReedQuantification 
 {
@@ -23,12 +26,23 @@ public class ReedQuantification
   // int array for the timescore
   int [] timeScore = { 3, 2, 1 };
   
-  // ints for the composite right and left scores
-  int leftScore = 0;
-  int rightScore = 0;
+  // doubles for the composite right and left scores
+  static int leftScore = 0;
+  static int rightScore = 0;
+  
+  static int finalLeftScore;
+  static int finalRightScore;
   
   //int for the differential between the two scores
-  int rightVsLeft;
+  static int rightVsLeft;
+  static double rightVsLeftPercentage;
+  
+  static int finalRightVsLeft;
+  static double finalRightVsLeftPercentage;
+  
+  
+  static double totalPossible = 360;
+  
   
   public ReedQuantification() //start of constructor
           {
@@ -78,12 +92,26 @@ public class ReedQuantification
                    else if (rightScore > leftScore)
                            {
                              rightVsLeft = rightScore - leftScore;
-                             boolean rightIsGreater = true; 
+                             rightVsLeftPercentage = ((rightScore/totalPossible) - (leftScore/totalPossible));
                            }//end of if
                    else 
                            {
                             rightVsLeft = leftScore - rightScore;
-                            boolean leftIsGreater = true;
+                            rightVsLeftPercentage = ((leftScore/totalPossible) - (rightScore/totalPossible));
                            }//end of else
+
+               finalLeftScore = leftScore;
+               finalRightScore = rightScore;
+               
+               finalRightVsLeft = rightVsLeft;
+               finalRightVsLeftPercentage = rightVsLeftPercentage;
+               
+               PanelFour panel = new PanelFour (finalLeftScore, finalRightScore, finalRightVsLeft, finalRightVsLeftPercentage);
+               
+               panel.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE);
+               panel.setSize( 1000, 400);
+               panel.setVisible( true );
+               panel.setLocationRelativeTo(null);
+               
               }//end of constructor
           }//end of class
