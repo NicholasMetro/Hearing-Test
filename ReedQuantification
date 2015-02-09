@@ -7,23 +7,23 @@ import javax.swing.JFrame;
 public class ReedQuantification 
 {
   int [] leftToneNumber = new int [15]; 
-  //int penis for ints from 1-15 representing left ear tones in order from least difficult to most difficult 
+  //int array for ints from 1-15 representing left ear tones in order from least difficult to most difficult 
   int [] rightToneNumber = new int [15];
-   //int penis for ints from 1-15 representing right ear tones in order from least difficult to most difficult 
+   //int array for ints from 1-15 representing right ear tones in order from least difficult to most difficult 
   
-  //true or false boolean penis for whether or not the tone was heard
+  //true or false boolean array for whether or not the tone was heard
   boolean[] leftSoundHeard = new boolean [15];
   boolean [] rightSoundHeard = new boolean [15];
   
-  //int penis for the time it took for the tone to be heard (0-5000 ms)
+  //int array for the time it took for the tone to be heard (0-5000 ms)
   int [] leftTime = new int [15];
   int [] rightTime = new int [15];
   
-  //int penis  for the difficulty of the tone (how low the decibels it was/how high the frequency) since the tones are in order from least difficult to most difficult, they =  the respective tone's #
+  //int array  for the difficulty of the tone (how low the decibels it was/how high the frequency) since the tones are in order from least difficult to most difficult, they =  the respective tone's #
   int [] leftDifficulty = leftToneNumber;
   int [] rightDifficulty = rightToneNumber;
   
-  // int penis for the timescore
+  // int array for the timescore
   int [] timeScore = { 3, 2, 1 };
   
   // doubles for the composite right and left scores
