@@ -6,42 +6,42 @@ import javax.swing.JFrame;
 
 public class ReedQuantification 
 {
-  int [] leftToneNumber = new int [15]; 
+  protected int [] leftToneNumber = new int [15]; 
   //int array for ints from 1-15 representing left ear tones in order from least difficult to most difficult 
-  int [] rightToneNumber = new int [15];
+  protected int [] rightToneNumber = new int [15];
    //int array for ints from 1-15 representing right ear tones in order from least difficult to most difficult 
   
   //true or false boolean array for whether or not the tone was heard
-  boolean[] leftSoundHeard = new boolean [15];
-  boolean [] rightSoundHeard = new boolean [15];
+  protected boolean[] leftSoundHeard = new boolean [15];
+  protected boolean [] rightSoundHeard = new boolean [15];
   
   //int array for the time it took for the tone to be heard (0-5000 ms)
-  int [] leftTime = new int [15];
-  int [] rightTime = new int [15];
+  protected int [] leftTime = new int [15];
+  protected int [] rightTime = new int [15];
   
   //int array  for the difficulty of the tone (how low the decibels it was/how high the frequency) since the tones are in order from least difficult to most difficult, they =  the respective tone's #
-  int [] leftDifficulty = leftToneNumber;
-  int [] rightDifficulty = rightToneNumber;
+  protected int [] leftDifficulty = leftToneNumber;
+  protected int [] rightDifficulty = rightToneNumber;
   
   // int array for the timescore
-  int [] timeScore = { 3, 2, 1 };
+  protected int [] timeScore = { 3, 2, 1 };
   
   // doubles for the composite right and left scores
-  static int leftScore = 0;
-  static int rightScore = 0;
+  protected static int leftScore = 0;
+  protected static int rightScore = 0;
   
-  static int finalLeftScore;
-  static int finalRightScore;
+  protected static int finalLeftScore;
+  protected static int finalRightScore;
   
   //int for the differential between the two scores
-  static int rightVsLeft;
-  static double rightVsLeftPercentage;
+  protected static int rightVsLeft;
+  protected static double rightVsLeftPercentage;
   
-  static int finalRightVsLeft;
-  static double finalRightVsLeftPercentage;
+  protected static int finalRightVsLeft;
+  protected static double finalRightVsLeftPercentage;
   
   
-  static double totalPossible = 360;
+  protected static double totalPossible = 360;
   
   
   public ReedQuantification() //start of constructor
