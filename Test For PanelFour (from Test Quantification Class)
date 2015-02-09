@@ -9,7 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import static ssf.Ssf.*;
+import java.text.DecimalFormat;
+
 
 public class panelFour extends JFrame
 {
@@ -17,6 +18,11 @@ public class panelFour extends JFrame
     public panelFour(int lScore, int rScore, int rVsL, double rVsLP )
     {
         super ("Hearing Test");
+        
+        double finalRVsLP = rVsLP * 100;
+        
+        DecimalFormat dF = new DecimalFormat("#.##");
+        
         
         setLayout(new GridLayout(3, 4, 5, 10));
         
@@ -30,12 +36,14 @@ public class panelFour extends JFrame
         
         String leftScoreString = String.valueOf(lScore);
         JLabel leftScoreNumber = new JLabel (leftScoreString);
+
         String rightScoreString = String.valueOf(rScore);
         JLabel rightScoreNumber = new JLabel (rightScoreString);
+
         
         JLabel scoresEqual = new JLabel ("Your left and right ears scored the same.");
-        JLabel rIsGreater = new JLabel ("Your right ear scored " + (rVsLP*100) + "% better than your left ear.");
-        JLabel lIsGreater = new JLabel ("Your left ear scored " + (rVsLP*100) + "% better than your right ear.");
+        JLabel rIsGreater = new JLabel ("Your right ear scored " + (dF.format(finalRVsLP)) + "% better than your left ear.");
+        JLabel lIsGreater = new JLabel ("Your left ear scored " + (dF.format(finalRVsLP)) + "% better than your right ear.");
         
         JLabel empty2 = new JLabel ("");
         JLabel empty3 = new JLabel ("");
@@ -68,21 +76,21 @@ public class panelFour extends JFrame
          add(lIsGreater);
         }
         
-        if (rScore >= 270 || lScore >= 270)
+        if (rScore >= 270 && lScore >= 270)
         {
             add (noHearingLoss);
         }
-        else if (rScore >= 200 && rScore < 270 || lScore >= 200 && lScore < 270)
+        else if (rScore >= 200 && rScore < 270 && lScore >= 200 && lScore < 270)
         {
             add (mildHearingLoss);
             add (consult);
         }
-        else if (rScore >= 160 && rScore < 200 || lScore >= 160 && lScore < 200)
+        else if (rScore >= 160 && rScore < 200 && lScore >= 160 && lScore < 200)
         {
             add (moderateHearingLoss);
             add (consult);
         }
-        else if (rScore >= 0 && rScore < 160 || lScore >= 0 && lScore < 160)
+        else if (rScore >= 0 && rScore < 160 && lScore >= 0 && lScore < 160)
         {
             add (severeHearingLoss);
             add (consult);
