@@ -1,51 +1,58 @@
-
 package testForQuantification;
+
+import javax.swing.JFrame;
 
 public class testForQuantification {
 
-static int [] leftToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-          //new int [15]; 
+  protected static int [] leftToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+
   //int array for ints from 1-15 representing left ear tones in order from least difficult to most difficult 
-  static int [] rightToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-          //new int [15];
+  
+   protected static int [] rightToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+
    //int array for ints from 1-15 representing right ear tones in order from least difficult to most difficult 
   
   //true or false boolean arrays for whether or not the tone was heard
-  static boolean[] leftSoundHeard = {true, true, true, true, false, true, false, true, true, false, false, false, false, false, false};
-          //new boolean [15];
-  static boolean [] rightSoundHeard = {true, true, true, true, false, true, false, false, false, false, false, false, false, false, false};
-          //new boolean [15];
+   
+   protected static boolean[] leftSoundHeard = {true, true, true, true, false, true, false,
+      true, true, false, false, false, false, false, false};
+
+   protected static boolean [] rightSoundHeard = {true, true, true, true, false, true, 
+      false, false, false, false, false, false, false, false, false};
+
   
   //int arrays for the time it took for the tone to be heard (0-5000 ms)
-  static int [] leftTime = {900, 1023, 2342, 234, 0, 231, 0, 3002, 3021, 0, 0, 0, 0, 0};
-          //new int [15];
-  static int [] rightTime = {2122, 131, 3213, 321, 0, 1234, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-          //new int [15];
-  
-  //int arrays  for the difficulty of the tone (how low the decibels it was/how high the frequency) since the tones are in order from least difficult to most difficult, they =  the respective tone's #
-  static int [] leftDifficulty = leftToneNumber;
-  static int [] rightDifficulty = rightToneNumber;
-  
+   
+   protected static int [] leftTime = {900, 1023, 2342, 234, 0, 231, 0, 3002, 3021, 0, 0,
+      0, 0, 0};
+   protected static int [] rightTime = {2122, 131, 3213, 321, 0, 1234, 0, 0, 0, 0, 0, 0, 
+      0, 0, 0};
+   
+  //int arrays  for the difficulty of the tone (how low the decibels it was/how 
+  //high the frequency) since the tones are in order from least difficult to 
+  //most difficult, they =  the respective tone's #
+   
+   protected static final int [] leftDifficulty = leftToneNumber;
+   protected static final int [] rightDifficulty = rightToneNumber;
+   
   // int array for the timescore
-  static int [] timeScore = { 3, 2, 1 };
+   protected static int [] timeScore = { 3, 2, 1 };
   
   // ints for the composite right and left scores
-  static int leftScore = 0;
-  static int rightScore = 0;
+   protected static int leftScore = 0;
+   protected static int rightScore = 0;
   
-   static int finalLeftScore;
-   static int finalRightScore;
+    protected static int finalLeftScore;
+    protected static int finalRightScore;
  
   //int for the differential between the two scores
-  static int rightVsLeft;
-  static double rightVsLeftPercentage;
+   protected static int rightVsLeft;
+   protected static double rightVsLeftPercentage;
   
-  static int finalRightVsLeft;
-  static double finalRightVsLeftPercentage;
+   protected static int finalRightVsLeft;
+   protected static double finalRightVsLeftPercentage;
   
-  
-  static double totalPossible = 360;
-  
+   protected static double totalPossible = 360;
   
   public static void main(String[] args) {
              
@@ -56,15 +63,18 @@ static int [] leftToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
                   {
                       if (leftTime[i] > 0 && leftTime[i] <= 1000)
                       {
-                        leftScore = leftScore + (leftDifficulty[i] * timeScore[2]); //leftScore = leftScore + difficulty*3
+                     leftScore = leftScore + (leftDifficulty[i] * timeScore[2]);
+                     //leftScore = leftScore + difficulty*3
                       }//end of if
                       if (leftTime[i] > 1000 && leftTime [i] <= 2000)
                       {
-                          leftScore = leftScore + (leftDifficulty[i] * timeScore[1]); //leftScore = leftScore + difficulty*2
+                     leftScore = leftScore + (leftDifficulty[i] * timeScore[1]);
+                     //leftScore = leftScore + difficulty*2
                       }//end of if
                       if (leftTime [i] > 2000 )
                       {
-                          leftScore  = leftScore + (leftDifficulty[i] * timeScore [0]); //leftScore = leftScore + difficulty*1 
+                   leftScore  = leftScore + (leftDifficulty[i] * timeScore [0]);
+                   //leftScore = leftScore + difficulty*1 
                       } //end of if
                   }//end of if
               }//end of for
@@ -75,15 +85,18 @@ static int [] leftToneNumber = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
                   {
                       if (rightTime[q] > 0 && rightTime[q] <= 1000)
                       {
-                        rightScore = rightScore + (leftDifficulty[q] * timeScore[2]); //rightScore = rightScore + difficulty*3
+                   rightScore = rightScore + (leftDifficulty[q] * timeScore[2]);
+                   //rightScore = rightScore + difficulty*3
                       }//end of if
                       if (rightTime[q] > 1000 && rightTime [q] <= 2000)
                       {
-                          rightScore = rightScore + (leftDifficulty[q] * timeScore[1]); //rightScore = rightScore + difficulty*2
+                   rightScore = rightScore + (leftDifficulty[q] * timeScore[1]);
+                   //rightScore = rightScore + difficulty*2
                       }//end of if
                       if (rightTime [q] > 2000 )
                       {
-                          rightScore  = rightScore + (rightDifficulty[q] * timeScore [0]); //rightScore = rightScore + difficulty*1
+                rightScore  = rightScore + (rightDifficulty[q] * timeScore [0]);
+                //rightScore = rightScore + difficulty*1
                       }//end of if
                   }//end of if
                }//end of for
