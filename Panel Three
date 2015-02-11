@@ -14,10 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-/**
- *
- * @author Jimmy
- */
+
 public class PanelThree extends JFrame
 {
     static JLabel header;
