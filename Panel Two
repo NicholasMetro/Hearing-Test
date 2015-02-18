@@ -49,7 +49,7 @@ class DoneHandler implements ActionListener
         // exit on close temporary until PanelThree finished 
         // and PanelFour construction begins
         panel3.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-        panel3.setSize( 1000, 400);
+        panel3.setSize( 500, 150);
         panel3.setVisible( true );
         panel3.setLocationRelativeTo(null);
         
