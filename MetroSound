@@ -1,0 +1,35 @@
+/*
+ Nick Metro
+2/27/15
+A class to play audio from files in the package
+ */
+package HearingTest;
+
+import java.io.InputStream;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
+
+public class MetroSound 
+{
+    String sound;
+    public MetroSound(String file)
+    {
+        sound = file;
+        playSound(sound);
+    }//end contructor
+    
+    public void playSound(String soundLoc)
+    {  
+        try
+        {
+            InputStream inputStream = getClass().getResourceAsStream(soundLoc);
+            AudioStream audioStream = new AudioStream(inputStream);
+            AudioPlayer.player.start(audioStream);
+        }//end try
+              
+        catch (Exception e)
+        {
+        }//end catch
+    }//end playSound method
+}//end class MetroSound
