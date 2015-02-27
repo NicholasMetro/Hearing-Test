@@ -6,6 +6,7 @@
 package HearingTest;
 
 import static HearingTest.PanelThree.*;
+import static HearingTest.PanelTwo.panel3;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+import java.applet.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.net.*;
+import javax.swing.*;
+import javax.sound.sampled.*;
 
 /**
  *
@@ -72,22 +79,47 @@ public class PanelThree extends JFrame
 
 class SoundTimer extends JFrame{
         private final Timer timer;
+        static int counter = 0;
         
         public SoundTimer(){
-            timer = new Timer(5500, new TimerListener());
+            timer = new Timer(10000, new TimerListener());
             timer.start();
         }
         private class TimerListener implements ActionListener
         {
             public void actionPerformed(ActionEvent event)
             {
-                //play sound here and set ear int to corresponding value
-                playsound.jpeg #python comments
-                System.out.println("Playing Sound");
+                  String[] sounds =  {"500Hz-RC.wav", "5000Hz-RC.wav",
+                      "8000Hz-LC.wav", "10000Hz-RC.wav", "500Hz-LC.wav", 
+                      "2000Hz-RC.wav", "2000Hz-LC.wav", "1000Hz-LC.wav", 
+                      "8000Hz-RC.wav", "5000Hz-LC.wav", "10000Hz-LC.wav", 
+                      "1000Hz-RC.wav"};
+                  
+                  MetroSound test = new MetroSound(sounds[counter]);
+                  counter ++;
+                
+           
                 soundStartTime = (int) System.currentTimeMillis() %  1000000000;
                 System.out.println(soundStartTime);
+                
+                if (counter == 12);
+                {
+                    panel3.dispose();
+                    //idk what data goes to this or if this is needed at all
+                    PanelFour panel4 = new PanelFour();
+                    
+                    // exit on close temporary until PanelThree finished 
+                    // and PanelFour construction begins
+                    panel4.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
+                    panel4.setSize( 1000, 400);
+                    panel4.setVisible( true );
+                    panel4.setLocationRelativeTo(null);
+                }//end if
+                
+                    
             }
-        }
+            
+            }
 }//end of class SoundTimer
 
 class RightHandler implements ActionListener{
