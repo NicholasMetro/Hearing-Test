@@ -1,5 +1,5 @@
 /*
- * Jimmy Blaszkiewicz and Nick Metro
+ * Jimmy Blaszkiewicz
  * Third Panel to collect response time and ear accuracy
  */
 
@@ -7,6 +7,7 @@ package HearingTest;
 
 import static HearingTest.PanelThree.*;
 import static HearingTest.PanelTwo.panel3;
+import static HearingTest.PanelTwoHalf.level;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -103,7 +104,7 @@ class SoundTimer extends JFrame{
             {
                   soundStartTime = (int) System.currentTimeMillis();
                   
-                  MetroSound test = new MetroSound(sounds[counter]);
+                  Calibration test = new Calibration(sounds[counter], level);
                   
               
                   counter ++;
