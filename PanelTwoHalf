@@ -1,0 +1,119 @@
+package HearingTest;
+
+
+import static HearingTest.PanelTwo.panel22;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+public class PanelTwoHalf extends JFrame
+{
+    static JLabel prompt;  
+    static JimButton done; 
+    static JimButton plus;
+    static JimButton minus;
+    static JimButton play;
+    static PanelThree panel3;
+    
+    static float decibelLevelComf;
+    
+    static int level = 0;
+    static String loc = "test.wav";
+    public PanelTwoHalf()
+    {
+        super ("Calibration");
+        setLayout(new FlowLayout());
+        
+        prompt = new JLabel ( 
+        "Set your computer's volume to 100%, then use the buttons to change "
+                + "the sound to a comfrotable level." );
+        prompt.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 16));
+        
+        done = new JimButton ("DONE", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
+        done.setFont(new Font ("Bold", Font.BOLD, 16));
+        
+        play = new JimButton ("Play Sound", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
+        play.setFont(new Font ("Bold", Font.BOLD, 16));
+        
+        plus = new JimButton ("+", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
+        plus.setFont(new Font ("Bold", Font.BOLD, 16));
+        
+        minus = new JimButton ("-", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
+        minus.setFont(new Font ("Bold", Font.BOLD, 16));
+       
+        DoneHandler bhandler = new DoneHandler();
+        done.addActionListener( bhandler );
+        
+        PlusHandler phandler = new PlusHandler();
+        plus.addActionListener(phandler);
+        
+        MinusHandler mhandler = new MinusHandler();
+        minus.addActionListener(mhandler); 
+        
+        PlayHandler pyhandler = new PlayHandler();
+        play.addActionListener(pyhandler);
+        
+       
+        
+
+        add ( prompt );
+        add ( play );
+        add( plus );
+        add ( minus );
+        add ( done );     
+         
+    }//end paneltwo constructor
+
+
+class PlusHandler implements ActionListener
+{
+    public void actionPerformed (ActionEvent event)
+    {
+        level++;
+    }//end actionPerformed
+}//end plus handler
+
+class MinusHandler implements ActionListener
+{
+    public void actionPerformed (ActionEvent event)
+    {
+        level--;
+    }//end actionPerformed
+}//end plus handler
+
+class PlayHandler implements ActionListener
+{
+    public void actionPerformed (ActionEvent event)
+    {
+        Calibration calib = new Calibration (loc, level);
+    }//end actionPerformed
+}//end plus handler
+
+class DoneHandler implements ActionListener
+{
+    PanelOne object = new PanelOne();
+    
+    public void actionPerformed ( ActionEvent event )
+    {
+        decibelLevelComf = 115 + level;
+        this.dispose();
+        panel3 = new PanelThree();
+        // exit on close temporary until PanelThree finished 
+        // and PanelFour construction begins
+        panel3.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
+        panel3.setSize( 1000, 400);
+        panel3.setVisible( true );
+        panel3.setLocationRelativeTo(null);
+        
+    }//end actionPerformed method
+    private void dispose()
+    {
+        panel22.setVisible(false);
+    }//end dispose method
+    
+}//end startButtonHandler class
+}//end class PanelTwo
