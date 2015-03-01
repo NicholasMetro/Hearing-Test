@@ -1,6 +1,5 @@
 /*
- * Jimmy Blaszkiewicz
- * Nick Metro
+ * Jimmy Blaszkiewicz and Nick Metro
  * Third Panel to collect response time and ear accuracy
  */
 
@@ -15,14 +14,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
-import java.applet.*;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.net.*;
-import javax.swing.*;
-import javax.sound.sampled.*;
 
 
+/**
+ *
+ * @author Jimmy
+ */
 public class PanelThree extends JFrame
 {
     static JLabel header;
@@ -40,6 +37,14 @@ public class PanelThree extends JFrame
     static int correctLeft;
     static int incorrectLeft;
     static int reactionSum;
+    
+    static boolean[] rightSoundHeard = {false, false, false, false, false, false};
+    static boolean[] leftSoundHeard = {false, false, false, false, false, false};
+        
+    static int[] rightTime = new int [6];
+    static int[] leftTime = new int [6];
+    
+    static int counter = 0;
     
     public PanelThree ()
     {
@@ -77,7 +82,16 @@ public class PanelThree extends JFrame
 
 class SoundTimer extends JFrame{
         private final Timer timer;
-        static int counter = 0;
+        static boolean rl = false;
+       
+        
+        static String[] sounds =  {"500Hz-RC.wav", "1000Hz-RC.wav",
+                      "2000Hz-RC.wav", "5000Hz-RC.wav", "8000Hz-RC.wav", 
+                      "10000Hz-RC.wav", "500Hz-LC.wav", "1000Hz-LC.wav", 
+                      "2000Hz-LC.wav", "5000Hz-LC.wav", "8000Hz-LC.wav", 
+                      "10000Hz-LC.wav"};
+        
+        
         
         public SoundTimer(){
             timer = new Timer(10000, new TimerListener());
@@ -87,19 +101,22 @@ class SoundTimer extends JFrame{
         {
             public void actionPerformed(ActionEvent event)
             {
-                  String[] sounds =  {"500Hz-RC.wav", "5000Hz-RC.wav",
-                      "8000Hz-LC.wav", "10000Hz-RC.wav", "500Hz-LC.wav", 
-                      "2000Hz-RC.wav", "2000Hz-LC.wav", "1000Hz-LC.wav", 
-                      "8000Hz-RC.wav", "5000Hz-LC.wav", "10000Hz-LC.wav", 
-                      "1000Hz-RC.wav"};
+                  soundStartTime = (int) System.currentTimeMillis();
                   
                   MetroSound test = new MetroSound(sounds[counter]);
+                  
+              
                   counter ++;
+                  if (counter == 6)
+                  {
+                      counter = 0;
+                      rl = true;
+                  }
                 
            
-                soundStartTime = (int) System.currentTimeMillis() %  1000000000;
-                System.out.println(soundStartTime);
                 
+                System.out.println(soundStartTime);
+                /*
                 if (counter == 12);
                 {
                     panel3.dispose();
@@ -112,7 +129,7 @@ class SoundTimer extends JFrame{
                     panel4.setSize( 1000, 400);
                     panel4.setVisible( true );
                     panel4.setLocationRelativeTo(null);
-                }//end if
+                }//end if  */
                 
                     
             }
@@ -125,27 +142,18 @@ class RightHandler implements ActionListener{
     public void actionPerformed( ActionEvent event )
     {
         System.out.println("You pressed the right button");
-        timeNow =  (int) System.currentTimeMillis() %  10000000;
+        timeNow =  (int) System.currentTimeMillis();
         System.out.println(timeNow);
         reactionTime = soundStartTime - timeNow;
         
-        if( reactionTime < 2000 && ear == 1)
-        {
-            correctRight++;
-            reactionSum += reactionTime;
-        }
-        else
-            incorrectRight++;
-        /*pseudocode
-        reactionTime = soundStartTime - TimeNow
-        if ( reactionTime is less than 300 milliseconds && the sound played in the right ear)
-            increment correct answer for right ear
-            add reaction time to a sum to be averaged later 
-                and given to user as average reaction time
-        //this reactionTime sum will be the same variable as the left ear
-        else
-            increment incorrect answer for right ear
-        */
+         if (right.getModel().isPressed())
+            rightSoundHeard[counter] = true;
+            
+        
+        
+        reactionTime = timeNow - soundStartTime;
+        rightTime[counter] = reactionTime;
+
     }//end actionPerformed Method
     
 }//end RightHandler
@@ -154,26 +162,14 @@ class LeftHandler implements ActionListener{
     public void actionPerformed( ActionEvent event )
     {
         System.out.println("You pressed the left button");
-        timeNow =  (int) System.currentTimeMillis() %  10000000;
+        timeNow =  (int) System.currentTimeMillis();
         System.out.println(timeNow);
-        reactionTime = soundStartTime - timeNow;
         
-        if( reactionTime < 2000 && ear == 2)
-        {
-            correctLeft++;
-            reactionSum += reactionTime;
-        }
-        else
-            incorrectLeft++;
-        /*pseudocode
-        reactionTime = SoundStartTime - TimeNow
-        if ( reactionTime is less than 300 milliseconds && the sound played in the left ear)
-            increment correct answer for left ear
-            add reaction time to a sum to be averaged later 
-                and given to user as average reaction time
-        //this reactionTime sum will be the same variable as the right ear
-        else
-            increment incorrect answer for left ear
-        */
+        if (left.getModel().isPressed())
+            leftSoundHeard[counter] = true;
+        
+
+        reactionTime = timeNow - soundStartTime;
+        leftTime[counter] = reactionTime;
     }//end actionPerformed Method
 }//end LeftHandler
