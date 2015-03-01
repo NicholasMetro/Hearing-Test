@@ -2,7 +2,6 @@ package HearingTest;
 
 
 import static HearingTest.PanelOne.panel2;
-import static HearingTest.PanelTwo.panel3;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,28 +14,83 @@ public class PanelTwo extends JFrame
 {
     static JLabel prompt;  
     static JimButton done; 
-    static PanelThree panel3;
+    static JimButton plus;
+    static JimButton minus;
+    static JimButton play;
+    static PanelTwoHalf panel22;
+    
+    static float decibelLevelLow;
+    
+    static int level = 0;
+    static String loc = "test.wav";
     public PanelTwo()
     {
-        super ("Hearing Test");
+        super ("Calibration");
         setLayout(new FlowLayout());
         
         prompt = new JLabel ( 
-                "Change your volume to 50% of the computer's maximum volume." );
+        "Set your computer's volume to 100%, then use the buttons to change "
+                + "the sound to a level that is barely audible." );
         prompt.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 16));
         
         done = new JimButton ("DONE", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
         done.setFont(new Font ("Bold", Font.BOLD, 16));
+        
+        play = new JimButton ("Play Sound", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
+        play.setFont(new Font ("Bold", Font.BOLD, 16));
+        
+        plus = new JimButton ("+", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
+        plus.setFont(new Font ("Bold", Font.BOLD, 16));
+        
+        minus = new JimButton ("-", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
+        minus.setFont(new Font ("Bold", Font.BOLD, 16));
        
         DoneHandler bhandler = new DoneHandler();
         done.addActionListener( bhandler );
         
+        PlusHandler phandler = new PlusHandler();
+        plus.addActionListener(phandler);
+        
+        MinusHandler mhandler = new MinusHandler();
+        minus.addActionListener(mhandler); 
+        
+        PlayHandler pyhandler = new PlayHandler();
+        play.addActionListener(pyhandler);
+        
+        
+
         add ( prompt );
+        add ( play );
+        add( plus );
+        add ( minus );
         add ( done );     
          
     }//end paneltwo constructor
-    
-}//end class paneltwo
+
+
+class PlusHandler implements ActionListener
+{
+    public void actionPerformed (ActionEvent event)
+    {
+        level++;
+    }//end actionPerformed
+}//end plus handler
+
+class MinusHandler implements ActionListener
+{
+    public void actionPerformed (ActionEvent event)
+    {
+        level--;
+    }//end actionPerformed
+}//end plus handler
+
+class PlayHandler implements ActionListener
+{
+    public void actionPerformed (ActionEvent event)
+    {
+        Calibration calib = new Calibration (loc, level);
+    }//end actionPerformed
+}//end plus handler
 
 class DoneHandler implements ActionListener
 {
@@ -44,14 +98,15 @@ class DoneHandler implements ActionListener
     
     public void actionPerformed ( ActionEvent event )
     {
+        decibelLevelLow = 115 + level;
         this.dispose();
-        panel3 = new PanelThree();
+        panel22 = new PanelTwoHalf();
         // exit on close temporary until PanelThree finished 
         // and PanelFour construction begins
-        panel3.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-        panel3.setSize( 500, 150);
-        panel3.setVisible( true );
-        panel3.setLocationRelativeTo(null);
+        panel22.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
+        panel22.setSize( 1000, 400);
+        panel22.setVisible( true );
+        panel22.setLocationRelativeTo(null);
         
     }//end actionPerformed method
     private void dispose()
@@ -60,4 +115,4 @@ class DoneHandler implements ActionListener
     }//end dispose method
     
 }//end startButtonHandler class
-
+}//end class PanelTwo
