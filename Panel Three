@@ -1,5 +1,6 @@
 /*
  * Jimmy Blaszkiewicz
+ * Nick Metro
  * Third Panel to collect response time and ear accuracy
  */
 
@@ -21,10 +22,7 @@ import java.net.*;
 import javax.swing.*;
 import javax.sound.sampled.*;
 
-/**
- *
- * @author Jimmy
- */
+
 public class PanelThree extends JFrame
 {
     static JLabel header;
