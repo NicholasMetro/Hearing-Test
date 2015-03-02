@@ -1,0 +1,9 @@
+Andrew Reed
+James Blaszkiewicz
+Nicholas Metro
+
+Gannon University Programming Contest Submission
+
+Problem:
+This program is designed to allow people to take a free and accessable hearing test. It is meant to help people 
+check their hearing strength in order to better decide whether to see a doctor.
