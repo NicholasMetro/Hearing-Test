@@ -29,8 +29,8 @@ public class PanelFour extends JFrame
 
         header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 24));
         
-        JLabel leftScoreHeader = new JLabel ("Left Ear Score (out of 360)");
-        JLabel rightScoreHeader = new JLabel ("Right Ear Score (out of 360)");
+        JLabel leftScoreHeader = new JLabel ("Left Ear Score (out of 180)");
+        JLabel rightScoreHeader = new JLabel ("Right Ear Score (out of 180)");
         JLabel empty = new JLabel ("");
         
         String leftScoreString = String.valueOf(lScore);
