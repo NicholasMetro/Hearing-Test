@@ -1,5 +1,3 @@
-
-
 package HearingTest;
 
 import javax.swing.JFrame;
@@ -26,6 +24,8 @@ public class ReedQuantification
   // int array for the timescore
   static int [] timeScore = { 3, 2, 1 };
   
+  static int heardScore = 10;
+  
   // doubles for the composite right and left scores
   static int leftScore = 0;
   static int rightScore = 0;
@@ -41,7 +41,7 @@ public class ReedQuantification
   static double finalRightVsLeftPercentage;
   
   
-  static double totalPossible = 360;
+  static double totalPossible = 180;
   
   
   public ReedQuantification(boolean[] soundHeardLeft, 
@@ -62,15 +62,15 @@ public class ReedQuantification
                   {
                       if (leftTime[i] > 0 && leftTime[i] <= 1000)
                       {
-                        leftScore = leftScore + (leftDifficulty[i] * timeScore[2]); //leftScore = leftScore + difficulty*3
+                        leftScore = leftScore + (heardScore * timeScore[2]); //leftScore = leftScore + difficulty*3
                       }//end of if
                       if (leftTime[i] > 1000 && leftTime [i] <= 2000)
                       {
-                          leftScore = leftScore + (leftDifficulty[i] * timeScore[1]); //leftScore = leftScore + difficulty*2
+                          leftScore = leftScore + (heardScore * timeScore[1]); //leftScore = leftScore + difficulty*2
                       }//end of if
                       if (leftTime [i] > 2000 )
                       {
-                          leftScore  = leftScore + (leftDifficulty[i] * timeScore [0]); //leftScore = leftScore + difficulty*1 
+                          leftScore  = leftScore + (heardScore * timeScore [0]); //leftScore = leftScore + difficulty*1 
                       } //end of if
                   }//end of if
               }//end of for
@@ -81,15 +81,15 @@ public class ReedQuantification
                   {
                       if (rightTime[q] > 0 && rightTime[q] <= 1000)
                       {
-                        rightScore = rightScore + (leftDifficulty[q] * timeScore[2]); //rightScore = rightScore + difficulty*3
+                        rightScore = rightScore + (heardScore * timeScore[2]); //rightScore = rightScore + difficulty*3
                       }//end of if
                       if (rightTime[q] > 1000 && rightTime [q] <= 2000)
                       {
-                          rightScore = rightScore + (leftDifficulty[q] * timeScore[1]); //rightScore = rightScore + difficulty*2
+                          rightScore = rightScore + (heardScore * timeScore[1]); //rightScore = rightScore + difficulty*2
                       }//end of if
                       if (rightTime [q] > 2000 )
                       {
-                          rightScore  = rightScore + (rightDifficulty[q] * timeScore [0]); //rightScore = rightScore + difficulty*1
+                          rightScore  = rightScore + (heardScore * timeScore [0]); //rightScore = rightScore + difficulty*1
                       }//end of if
                   }//end of if
                }//end of for
