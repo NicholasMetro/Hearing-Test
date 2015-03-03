@@ -2,7 +2,7 @@ package HearingTest;
 
 import javax.swing.JFrame;
 
-public class ReedQuantification 
+public class Quantification 
 {
   static int [] leftToneNumber = new int [6]; 
   //int array for ints from 1-6 representing left ear tones in order from least difficult to most difficult 
