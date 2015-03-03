@@ -1,7 +1,7 @@
 # Hearing-Test
 ******
-Jimmy Blaszkiewicz
-Nicholas Metro
+Jimmy Blaszkiewicz, 
+Nicholas Metro, 
 Andrew Reed
 ******
 
