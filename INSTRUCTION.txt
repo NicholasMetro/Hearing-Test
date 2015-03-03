@@ -1,0 +1,18 @@
+The source code for this program can be found in the HearingTest.zip file and on
+<https://github.com/NicholasMetro/Hearing-Test/>
+
+In order to get the best results, the user should press the button of the corresponding ear
+as soon as he/she hears the sound, as well as using headphones.
+
+The score is based off of reaction time as well as the correct button being pressed.
+
+In order to assemble the executable program, one should first extract all of the files from the HearingTest.zip file
+Make absolutely sure that the computer where this program will be used has the Java JDK installed.
+The downloads for the JDK can be found at this link
+<http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
+Choose the appropriate download based on your own computer's capablities. 
+
+Inside the HearingTest/dist/ folder location you will find the HearingTest.jar Executable Jar File.
+Opening this will begin the HearingTest.
+Once started, the HearingTest will guide you through the process until the Results Page.
+After you reach the Results Page the test is over.
