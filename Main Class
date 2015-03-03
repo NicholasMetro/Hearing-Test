@@ -12,7 +12,7 @@ public class Test{
     static PanelOne hearingJFrame = new PanelOne();
     public static void main(String[] args) 
     {
-        hearingJFrame.setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE );
+        hearingJFrame.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
         hearingJFrame.setSize( 500, 150);
         hearingJFrame.setVisible( true );
         hearingJFrame.setLocationRelativeTo(null);
