@@ -1,5 +1,5 @@
 
-package hearingtest;
+package HearingTest;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -8,7 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import static hearingtest.ReedQuantification.*;
+import static HearingTest.ReedQuantification.*;
+import java.text.DecimalFormat;
 
 public class PanelFour extends JFrame
 {
@@ -29,8 +30,8 @@ public class PanelFour extends JFrame
 
         header.setFont(new Font ("Baseline", Font.ROMAN_BASELINE, 24));
         
-        JLabel leftScoreHeader = new JLabel ("Left Ear Score (out of 180)");
-        JLabel rightScoreHeader = new JLabel ("Right Ear Score (out of 180)");
+        JLabel leftScoreHeader = new JLabel ("Left Ear Score (out of 150)");
+        JLabel rightScoreHeader = new JLabel ("Right Ear Score (out of 150)");
         JLabel empty = new JLabel ("");
         
         String leftScoreString = String.valueOf(lScore);
@@ -75,21 +76,21 @@ public class PanelFour extends JFrame
          add(lIsGreater);
         }
         
-        if (rScore >= 160 && lScore >= 160)
+        if (rScore >= 140 && lScore >= 140)
         {
             add (noHearingLoss);
         }
-        else if (rScore >= 120 && rScore < 160 || lScore >= 120 && lScore < 160)
+        else if (rScore >= 110 && rScore < 140 || lScore >= 110 && lScore < 140)
         {
             add (mildHearingLoss);
             add (consult);
         }
-        else if (rScore >= 100 && rScore < 160 || lScore >= 100 && lScore < 160)
+        else if (rScore >= 90 && rScore < 110 || lScore >= 90 && lScore < 110)
         {
             add (moderateHearingLoss);
             add (consult);
         }
-        else if (rScore >= 0 && rScore < 100 || lScore >= 0 && lScore < 100)
+        else if (rScore >= 00 && rScore < 90 || lScore >= 00 && lScore < 90)
         {
             add (severeHearingLoss);
             add (consult);
