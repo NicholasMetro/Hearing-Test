@@ -22,7 +22,7 @@ public class ReedQuantification
   static int [] rightDifficulty = rightToneNumber;
   
   // int array for the timescore
-  static int [] timeScore = { 3, 2, 1 };
+  static int [] timeScore = { 1, 2, 3 };
   
   static int heardScore = 10;
   
@@ -79,15 +79,15 @@ public class ReedQuantification
               {
                   if (rightSoundHeard[q] == true)
                   {
-                      if (rightTime[q] > 0 && rightTime[q] <= 1000)
+                      if (rightTime[q] > 0 && rightTime[q] <= 10000)
                       {
                         rightScore = rightScore + (heardScore * timeScore[2]); //rightScore = rightScore + difficulty*3
                       }//end of if
-                      if (rightTime[q] > 1000 && rightTime [q] <= 2000)
+                      if (rightTime[q] > 10000 && rightTime [q] <= 20000)
                       {
                           rightScore = rightScore + (heardScore * timeScore[1]); //rightScore = rightScore + difficulty*2
                       }//end of if
-                      if (rightTime [q] > 2000 )
+                      if (rightTime [q] > 20000 )
                       {
                           rightScore  = rightScore + (heardScore * timeScore [0]); //rightScore = rightScore + difficulty*1
                       }//end of if
