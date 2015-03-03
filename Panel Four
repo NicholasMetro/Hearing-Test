@@ -75,21 +75,21 @@ public class PanelFour extends JFrame
          add(lIsGreater);
         }
         
-        if (rScore >= 270 || lScore >= 270)
+        if (rScore >= 160 && lScore >= 160)
         {
             add (noHearingLoss);
         }
-        else if (rScore >= 200 && rScore < 270 || lScore >= 200 && lScore < 270)
+        else if (rScore >= 120 && rScore < 160 || lScore >= 120 && lScore < 160)
         {
             add (mildHearingLoss);
             add (consult);
         }
-        else if (rScore >= 160 && rScore < 200 || lScore >= 160 && lScore < 200)
+        else if (rScore >= 100 && rScore < 160 || lScore >= 100 && lScore < 160)
         {
             add (moderateHearingLoss);
             add (consult);
         }
-        else if (rScore >= 0 && rScore < 160 || lScore >= 0 && lScore < 160)
+        else if (rScore >= 0 && rScore < 100 || lScore >= 0 && lScore < 100)
         {
             add (severeHearingLoss);
             add (consult);
