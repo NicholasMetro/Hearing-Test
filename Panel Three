@@ -7,6 +7,7 @@ package HearingTest;
 
 import static HearingTest.PanelThree.*;
 import static HearingTest.PanelTwo.panel3;
+import static HearingTest.SoundTimer.rl;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -45,6 +46,8 @@ public class PanelThree extends JFrame
     static int[] leftTime = new int [6];
     
     static int counter = 0;
+    static int counterRight = -1;
+    static int counterLeft = -1;
     
     public PanelThree ()
     {
@@ -80,21 +83,21 @@ public class PanelThree extends JFrame
     
 }//end panel three class
 
-class SoundTimer extends JFrame{
+class SoundTimer{
         private final Timer timer;
         static boolean rl = false;
        
         
-        static String[] sounds =  {"500Hz-RC.wav", "1000Hz-RC.wav",
-                      "2000Hz-RC.wav", "5000Hz-RC.wav", "8000Hz-RC.wav", 
-                      "10000Hz-RC.wav", "500Hz-LC.wav", "1000Hz-LC.wav", 
-                      "2000Hz-LC.wav", "5000Hz-LC.wav", "8000Hz-LC.wav", 
-                      "10000Hz-LC.wav"};
+        static String[] sounds =  {"540R.wav", "580R.wav",
+                      "240R.wav", "560R.wav", "260R.wav", 
+                      "280R.wav", "240L.wav", "280L.wav", 
+                      "540L.wav", "260L.wav", "580L.wav", 
+                      null};
         
         
         
         public SoundTimer(){
-            timer = new Timer(10000, new TimerListener());
+            timer = new Timer(5000, new TimerListener());
             timer.start();
         }
         private class TimerListener implements ActionListener
@@ -104,15 +107,29 @@ class SoundTimer extends JFrame{
                   soundStartTime = (int) System.currentTimeMillis();
                   
                   MetroSound test = new MetroSound(sounds[counter]);
+                  counter++;
                   
-              
-                  counter ++;
-                  if (counter == 6)
+                  if(counterRight == 5 && rl && counterLeft != 5)
+                      counterLeft++;
+                  else if (counterRight != 6)
+                      counterRight++;
+                  
+                  if(rl == true && counterRight + counterLeft == 10)
                   {
-                      counter = 0;
+                      ReedQuantification reed = new ReedQuantification(
+                              leftSoundHeard, rightSoundHeard,
+                              rightTime, leftTime);
+                      panel3.setVisible(false);
+                      timer.stop();
+                  }
+                  
+                  
+                  if (counterRight >= 5)
+                  {
                       rl = true;
                   }
-                
+                  
+                  
            
                 
                 System.out.println(soundStartTime);
@@ -144,15 +161,20 @@ class RightHandler implements ActionListener{
         System.out.println("You pressed the right button");
         timeNow =  (int) System.currentTimeMillis();
         System.out.println(timeNow);
-        reactionTime = soundStartTime - timeNow;
-        
-         if (right.getModel().isPressed())
-            rightSoundHeard[counter] = true;
-            
-        
-        
         reactionTime = timeNow - soundStartTime;
-        rightTime[counter] = reactionTime;
+        System.out.println(reactionTime);
+        
+        //todo if(reactiontime less than 5000 and rightSound then set data
+         if (reactionTime < 5000 && rl == false)
+         {
+             rightSoundHeard[counterRight] = true;
+             rightTime[counterRight] = reactionTime;
+         }
+         else 
+         {
+             rightSoundHeard[counterRight] = false;
+             rightTime[counterRight] = 5000;
+         }
 
     }//end actionPerformed Method
     
@@ -164,12 +186,17 @@ class LeftHandler implements ActionListener{
         System.out.println("You pressed the left button");
         timeNow =  (int) System.currentTimeMillis();
         System.out.println(timeNow);
-        
-        if (left.getModel().isPressed())
-            leftSoundHeard[counter] = true;
-        
-
         reactionTime = timeNow - soundStartTime;
-        leftTime[counter] = reactionTime;
+        System.out.println(reactionTime);
+        if (reactionTime < 5000 && rl)
+         {
+             leftSoundHeard[counterLeft] = true;
+             leftTime[counterLeft] = reactionTime;
+         }
+        else
+        {
+            leftSoundHeard[counterLeft] = false;
+            rightTime[counterLeft] = 5000;
+        }
     }//end actionPerformed Method
 }//end LeftHandler
