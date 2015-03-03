@@ -13,7 +13,8 @@ import javax.swing.JLabel;
 
 public class PanelTwo extends JFrame
 {
-    static JLabel prompt;  
+    static JLabel prompt; 
+    static JLabel prompt2;
     static JimButton done; 
     static PanelThree panel3;
     public PanelTwo()
@@ -21,9 +22,11 @@ public class PanelTwo extends JFrame
         super ("Hearing Test");
         setLayout(new FlowLayout());
         
-        prompt = new JLabel ( 
-                "Change your volume to 50% of the computer's maximum volume." );
+        prompt = new JLabel ("Change your volume to 100% of the computer's maximum volume.");
         prompt.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 16));
+        
+        prompt2 = new JLabel ("Please use headphones for the most accurate results.");
+        prompt2.setFont(new Font ("Cooper", Font.ROMAN_BASELINE, 16));
         
         done = new JimButton ("DONE", HearingTest.PanelOne.w, HearingTest.PanelOne.h);
         done.setFont(new Font ("Bold", Font.BOLD, 16));
@@ -32,6 +35,7 @@ public class PanelTwo extends JFrame
         done.addActionListener( bhandler );
         
         add ( prompt );
+        add ( prompt2 );
         add ( done );     
          
     }//end paneltwo constructor
@@ -60,4 +64,3 @@ class DoneHandler implements ActionListener
     }//end dispose method
     
 }//end startButtonHandler class
-
